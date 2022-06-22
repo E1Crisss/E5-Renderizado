@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;400;600&display=swap");
+
+.box {
+  position: absolute;
+  text-align: center;
+  background-color: rgba(255, 166, 0, 0.5);
+  width: 900px;
+  height: 400px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+}
+
+.inputS {
+  position: absolute;
+  left: 56%;
+  top: 88%;
+  text-align: center;
+  border-radius: 0px 15px 15px 0;
+  padding: 5px;
+  width: 160px;
+  height: 30px;
+  border-style: none;
+  transform: translate(-50%, -50%);
+}
+
+.inputS::placeholder {
+  text-align: center;
+}
+
+.btn {
+  position: absolute;
+  right: 45%;
+  top: 88%;
+  border-radius: 15px 0 0 15px;
+  width: 160px;
+  height: 40px;
+  background-color: white;
+  border-style: none;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.titulo {
+  margin-top: 35px;
+  color: white;
+  text-align: center;
+}
+
+.imgLuigi {
+  width: 200px;
+  position: absolute;
+  left: 75px;
+  top: 300px;
+  transform: translate(-50%, -50%);
+}
