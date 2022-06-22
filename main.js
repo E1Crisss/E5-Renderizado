@@ -61,8 +61,6 @@ const $contain = document.createElement("section"),
   $inputS = document.createElement("input"),
   $btnSumit = document.createElement("input"),
   $imgLuigi = document.createElement("img");
-
-document.addEventListener("DOMContentLoaded", (e) => {
   // titulo
   const $title = document.createElement("h1"),
     $titletext = document.createTextNode("Pizzeria Luigi Risoto");
@@ -78,6 +76,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
   $imgLuigi.className = "imgLuigi";
   $contain.appendChild($imgLuigi);
 
+// card
+
+
+
   // Input search y submit
   document.body.appendChild($inputS);
   $inputS.className = "inputS";
@@ -85,6 +87,9 @@ document.addEventListener("DOMContentLoaded", (e) => {
   $btnSumit.className = "btn";
   $btnSumit.setAttribute("type", "submit");
   document.body.appendChild($btnSumit);
+
+document.addEventListener("DOMContentLoaded", (e) => {
+    localStorage.setItem("Pizzeria Luigi", JSON.stringify(menuPizzas));
 });
 
 document.body.style.background =
@@ -92,4 +97,3 @@ document.body.style.background =
 document.body.style.backgroundSize = "cover";
 document.body.style.fontFamily = "Noto Sans";
 
-localStorage.setItem("Pizzeria Luigi", JSON.stringify(menuPizzas));
