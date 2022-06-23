@@ -54,46 +54,67 @@ const menuPizzas = [
     imagen: "./img/p-especial.webp",
   },
 ];
-
-// DOM
-
 const $contain = document.createElement("section"),
   $inputS = document.createElement("input"),
   $btnSumit = document.createElement("input"),
   $imgLuigi = document.createElement("img");
-  // titulo
-  const $title = document.createElement("h1"),
-    $titletext = document.createTextNode("Pizzeria Luigi Risoto");
-  $title.appendChild($titletext);
-  $title.className = "titulo";
-  document.body.appendChild($title);
-  // contenedor
+// titulo
+const $title = document.createElement("h1"),
+  $titletext = document.createTextNode("Pizzeria Luigi Risoto");
+$title.appendChild($titletext);
+$title.className = "titulo";
+document.body.appendChild($title);
+// contenedor
 
-  document.body.style.width = "100vw";
-  $contain.className = "box";
-  document.body.appendChild($contain);
-  $imgLuigi.setAttribute("src", "./img/Luigi_Risotto.webp");
-  $imgLuigi.className = "imgLuigi";
-  $contain.appendChild($imgLuigi);
+document.body.style.width = "100vw";
+$contain.className = "box";
+$imgLuigi.setAttribute("src", "./img/Luigi_Risotto.webp");
+$imgLuigi.className = "imgLuigi";
+document.body.appendChild($contain);
+$contain.appendChild($imgLuigi);
 
 // card
 
+const renderPizza = (date) => {
+  menuPizzas.forEach((pizzas) => {
+    let $eCard = document.createElement("div");
+    $eCard.className = "card";
+    $contain.appendChild($eCard);
 
+    let $imgPizza = document.createElement("img");
+    $imgPizza.setAttribute("src", pizzas.imagen);
+    $eCard.appendChild($imgPizza);
 
-  // Input search y submit
-  document.body.appendChild($inputS);
-  $inputS.className = "inputS";
-  $inputS.setAttribute("placeholder", "¿Qué Pizzas buscas?");
-  $btnSumit.className = "btn";
-  $btnSumit.setAttribute("type", "submit");
-  document.body.appendChild($btnSumit);
+    let $info = document.createElement("div");
+    $info.className = "info";
+    let $nPizza = document.createElement("h2");
+    $nPizza = document.createTextNode(pizzas.nombre);
+    let $txtIngre = document.createElement("span");
+    $txtIngre = document.createTextNode(pizzas.ingredientes);
+    let $txtprice = document.createElement("span");
+    $txtprice = document.createTextNode(pizzas.precio);
+
+    $eCard.appendChild($info);
+    $info.appendChild($nPizza);
+    $info.appendChild($txtIngre);
+    $info.appendChild($txtprice);
+  });
+};
+
+// Input search y submit
+document.body.appendChild($inputS);
+$inputS.className = "inputS";
+$inputS.setAttribute("placeholder", "¿Qué Pizzas buscas?");
+$btnSumit.className = "btn";
+$btnSumit.setAttribute("type", "submit");
+document.body.appendChild($btnSumit);
 
 document.addEventListener("DOMContentLoaded", (e) => {
-    localStorage.setItem("Pizzeria Luigi", JSON.stringify(menuPizzas));
+  localStorage.setItem("Pizzeria Luigi", JSON.stringify(menuPizzas));
+
+  document.body.style.background =
+    "red url('https://c0.wallpaperflare.com/preview/436/87/720/artesanal-pizza-cheese-close-up-crust.jpg') no-repeat fixed center";
+  document.body.style.backgroundSize = "cover";
+  document.body.style.fontFamily = "Noto Sans";
+  renderPizza();
 });
-
-document.body.style.background =
-  "red url('https://c0.wallpaperflare.com/preview/436/87/720/artesanal-pizza-cheese-close-up-crust.jpg') no-repeat fixed center";
-document.body.style.backgroundSize = "cover";
-document.body.style.fontFamily = "Noto Sans";
-
