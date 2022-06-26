@@ -8,14 +8,14 @@
 const menuPizzas = [
   {
     id: 1,
-    nombre: "Muzarella",
+    nombre: "MUZARELLA",
     ingredientes: ["Muzarella", " Aceituna"],
     precio: 500,
     imagen: "./img/p-muzzarella.jpg",
   },
   {
     id: 2,
-    nombre: "Morron",
+    nombre: "MORRON",
     ingredientes: ["Muzarella", " Aceituna", " Morron"],
     precio: 550,
     imagen: "./img/p-napo.jpg",
@@ -23,21 +23,21 @@ const menuPizzas = [
 
   {
     id: 3,
-    nombre: "Palmitos",
+    nombre: "PALMITOS",
     ingredientes: ["Muzarella", " Salsa Golf", " Tomate Cherry"],
     precio: 650,
     imagen: "./img/p-palmitos.jpg",
   },
   {
     id: 4,
-    nombre: "Panceta",
+    nombre: "PANCETA",
     ingredientes: ["Muzarella", " Huevo Frito"],
     precio: 700,
     imagen: "./img/p-panceta.jpg",
   },
   {
     id: 5,
-    nombre: "Especial de la Casa",
+    nombre: "ESPECIAL",
     ingredientes: [
       "Muzarella",
       "Carne de lomo",
@@ -102,52 +102,59 @@ $btnSumit.className = "btn";
 $btnSumit.setAttribute("type", "search");
 $btnSumit.setAttribute("placeholder", "¿Qué Pizzas buscas?");
 document.body.appendChild($btnSumit);
+const $btnReset = document.createElement("input");
+$btnReset.className = "inputS";
+$btnReset.setAttribute("type", "button");
+$btnReset.setAttribute("value", "reset");
+document.body.appendChild($btnReset);
 
 const searchP = () => {
-  const searchValor = $btnSumit.value;
+  const searchValor = $btnSumit.value.toUpperCase();
 
   while ($contain.firstChild) {
     $contain.removeChild($contain.firstChild);
   }
 
-  // menuPizzas.forEach((pizzas) => {
-  // const mostrarPizza = pizzas.find((p) => p.nombre == searchValor);
+  const mostrarPizza = menuPizzas.find((pizza) => pizza.nombre === searchValor);
 
-  if (searchValor) {
-    for (let i = 0; i < menuPizzas.length; i++) {
-      if (menuPizzas[i].nombre == searchValor.value) {
-        let $eCard = document.createElement("div");
-        $eCard.classList.add("card");
-        $contain.appendChild($eCard);
+  if (mostrarPizza) {
+    let $eCard = document.createElement("div");
+    $eCard.classList.add("card");
+    $contain.appendChild($eCard);
 
-        let $imgPizza = document.createElement("img");
-        $imgPizza.setAttribute("src", i.imagen);
-        $eCard.appendChild($imgPizza);
+    let $imgPizza = document.createElement("img");
+    $imgPizza.setAttribute("src", mostrarPizza.imagen);
+    $eCard.appendChild($imgPizza);
 
-        let $info = document.createElement("div");
-        $info.classList.add("info");
-        $eCard.appendChild($info);
+    let $info = document.createElement("div");
+    $info.classList.add("info");
+    $eCard.appendChild($info);
 
-        let $nPizza = document.createElement("h2");
-        $nPizza.innerHTML = searchValor.nombre;
+    let $nPizza = document.createElement("h2");
+    $nPizza.innerHTML = mostrarPizza.nombre;
 
-        let $iPizza = document.createElement("span");
-        $iPizza.innerHTML = searchValor.ingredientes;
+    let $iPizza = document.createElement("span");
+    $iPizza.innerHTML = mostrarPizza.ingredientes;
 
-        let $pPizza = document.createElement("span");
-        $pPizza.innerHTML = `$ ${searchValor.precio}`;
+    let $pPizza = document.createElement("span");
+    $pPizza.innerHTML = `$ ${mostrarPizza.precio}`;
 
-        $info.appendChild($nPizza);
-        $info.appendChild($iPizza);
-        $info.appendChild($pPizza);
-      }
-    }
+    $info.appendChild($nPizza);
+    $info.appendChild($iPizza);
+    $info.appendChild($pPizza);
   }
 };
 
 $btnSumit.addEventListener("search", () => {
   searchP();
 });
+
+const reset = () => {
+  window.location.reload();
+}
+$btnReset.addEventListener('click', (e)=>{
+  reset()
+})
 
 document.addEventListener("DOMContentLoaded", (e) => {
   localStorage.setItem("Pizzeria Luigi", JSON.stringify(menuPizzas));
